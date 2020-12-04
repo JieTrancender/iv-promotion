@@ -1,20 +1,21 @@
 BUILDDIR = build
 BUILDFLAGS =
 
-.PHONY: all clean test
-
-APPS = atomic-test nsq-producer nsq-consumer
+APPS = atomic-test nsq-producer nsq-consumer cobra-test
 all: $(APPS)
-
-clean:
-	rm -rf $(BUILDDIR)
 
 $(BUILDDIR)/%:
 	@mkdir -p $(dir $@)
 	go build ${BUILDFLAGS} -o $@ ./apps/$*
 
-.PHONY: $(APPS)
 $(APPS): %: $(BUILDDIR)/%
+
+clean:
+	rm -rf $(BUILDDIR)
 
 test:
 	go test -v -race -cover -coverprofile=coverage.txt -covermode=atomic ./...
+
+.PHONY: clean all test
+.PHONY: $(APPS)
+

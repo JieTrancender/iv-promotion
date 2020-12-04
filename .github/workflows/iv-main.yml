@@ -11,7 +11,20 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+
+    services:
+      etcd:
+        image: bitnami/etcd:3.4.13
+        ports:
+          - 2379:2379
+          - 2380:2380
+        env:
+          ALLOW_NONE_AUTHENTICATION: yes
+    
     steps:
+
+    - name: test etcd
+      run: sudo ./test/shell/cli_test.sh
 
     - name: Set up Go 1.x
       uses: actions/setup-go@v2

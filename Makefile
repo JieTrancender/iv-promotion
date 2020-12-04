@@ -1,10 +1,9 @@
 BUILDDIR = build
 BUILDFLAGS =
 
-
 .PHONY: all clean test
 
-APPS = atomic-test nsq-producer
+APPS = atomic-test nsq-producer nsq-consumer
 all: $(APPS)
 
 clean:

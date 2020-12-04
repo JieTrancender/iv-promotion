@@ -2,7 +2,7 @@ BUILDDIR = build
 BUILDFLAGS =
 
 
-.PHONY: all clean
+.PHONY: all clean test
 
 APPS = atomic-test
 all: $(APPS)
@@ -16,3 +16,6 @@ $(BUILDDIR)/%:
 
 .PHONY: $(APPS)
 $(APPS): %: $(BUILDDIR)/%
+
+test:
+	go test -v -race -cover -coverprofile=coverage.txt -covermode=atomic ./...

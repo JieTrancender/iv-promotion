@@ -12,7 +12,7 @@ clean:
 
 $(BUILDDIR)/%:
 	@mkdir -p $(dir $@)
-	go build ${BUILDFLAGS} -o $@ ./$*
+	go build ${BUILDFLAGS} -o $@ ./apps/$*
 
 .PHONY: $(APPS)
 $(APPS): %: $(BUILDDIR)/%

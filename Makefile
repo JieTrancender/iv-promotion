@@ -4,7 +4,7 @@ BUILDFLAGS =
 
 .PHONY: all clean test
 
-APPS = atomic-test
+APPS = atomic-test nsq-producer
 all: $(APPS)
 
 clean:

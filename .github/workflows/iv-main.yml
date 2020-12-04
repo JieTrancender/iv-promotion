@@ -23,9 +23,6 @@ jobs:
     
     steps:
 
-    - name: test etcd
-      run: sudo ./test/shell/cli_test.sh
-
     - name: Set up Go 1.x
       uses: actions/setup-go@v2
       with:
@@ -42,8 +39,14 @@ jobs:
             dep ensure
         fi
 
+    - name: Test
+      run: make test
+        
     - name: Build
       run: make all
 
-    - name: Test
-      run: make test
+    - name: test etcd
+      run: sudo ./test/shell/cli_test.sh
+
+
+

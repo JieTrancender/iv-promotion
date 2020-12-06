@@ -16,6 +16,8 @@ clean:
 test:
 	go test -v -race -cover -coverprofile=coverage.txt -covermode=atomic ./...
 
-.PHONY: clean all test
+.PHONY: clean all test lint
 .PHONY: $(APPS)
 
+lint:
+	golangci-lint run --tests=false ./...

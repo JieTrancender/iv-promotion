@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
+	"time"
+
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
-	"time"
 )
 
 func f1(url string) {
@@ -22,7 +23,6 @@ func main() {
 	logger, _ := zap.NewProduction(zap.AddCaller(), zap.AddStacktrace(zapcore.WarnLevel))
 	zap.ReplaceGlobals(logger)
 
-	defer logger.Sync()
 	logger2 := logger.With(zap.String("services", "manager-api"))
 
 	url := "http://example.org/api"
@@ -43,4 +43,6 @@ func main() {
 	logger2.Info("failed to fetch URL")
 
 	f1(url)
+
+	// _ = logger.Sync()
 }

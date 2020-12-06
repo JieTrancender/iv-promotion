@@ -2,18 +2,19 @@ package cmd
 
 import (
 	"fmt"
+	"os"
+	"strings"
+
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"os"
-	"strings"
 )
 
 var (
 	// Used for flags
-	cfgFile     string
-	userLicense string
-	echoTimes   int
+	cfgFile string
+	// userLicense string
+	echoTimes int
 
 	rootCmd = &cobra.Command{
 		Use:   "iv-promotion",
@@ -56,8 +57,8 @@ func init() {
 	rootCmd.PersistentFlags().StringP("author", "a", "JieTrancender", "author name for copyright attribution")
 	rootCmd.PersistentFlags().Bool("viper", true, "use Viper for configuration")
 	timesCmd.Flags().IntVarP(&echoTimes, "times", "t", 1, "times to echo the input")
-	viper.BindPFlag("author", rootCmd.PersistentFlags().Lookup("author"))
-	viper.BindPFlag("useViper", rootCmd.PersistentFlags().Lookup("viper"))
+	_ = viper.BindPFlag("author", rootCmd.PersistentFlags().Lookup("author"))
+	_ = viper.BindPFlag("useViper", rootCmd.PersistentFlags().Lookup("viper"))
 	viper.SetDefault("author", "JieTrancender <jie-email@jie-trancender.org>")
 	viper.SetDefault("license", "apache")
 

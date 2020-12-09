@@ -1,7 +1,7 @@
 BUILDDIR = build
 BUILDFLAGS =
 
-APPS = atomic-test nsq-producer nsq-consumer cobra-test zap-test goroutine-test
+APPS = atomic-test nsq-producer nsq-consumer cobra-test zap-test goroutine-test select-test
 all: $(APPS)
 
 $(BUILDDIR)/%:

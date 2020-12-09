@@ -2,16 +2,15 @@ package main
 
 import (
 	"runtime"
-	"time"
 )
 
-func sum() {
+func sum(c3 chan struct{}) {
 	sum := 0
 	for i := 0; i < 10000; i++ {
 		sum += i
 	}
 	println(sum)
-	time.Sleep(1 * time.Second)
+	c3 <- struct{}{}
 }
 
 func main() {
@@ -28,18 +27,12 @@ func main() {
 		c <- struct{}{}
 	}(c, c1)
 
-	go func(i chan struct{}) {
-		sum := 0
-		for i := 0; i < 10000; i++ {
-			sum += i
-		}
-		println(sum)
-
-		c <- struct{}{}
-	}(c)
+	c3 := make(chan struct{})
+	go sum(c3)
 
 	println("NumGoroutine", runtime.NumGoroutine())
 	<-c
+	<-c3
 	println("NumGoroutine", runtime.NumGoroutine())
 
 	// 通道c1还可以继续读取

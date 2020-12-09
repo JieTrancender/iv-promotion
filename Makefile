@@ -1,7 +1,8 @@
 BUILDDIR = build
 BUILDFLAGS =
 
-APPS = atomic-test nsq-producer nsq-consumer cobra-test zap-test waitGroup-test goroutine-test select-test
+APPS = atomic-test nsq-producer nsq-consumer cobra-test zap-test waitGroup-test goroutine-test select-test \
+	closeChannelToBroadcast
 all: $(APPS)
 
 $(BUILDDIR)/%:

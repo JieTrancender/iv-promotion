@@ -2,7 +2,7 @@ BUILDDIR = build
 BUILDFLAGS =
 
 APPS = atomic-test nsq-producer nsq-consumer cobra-test zap-test waitGroup-test goroutine-test select-test \
-	closeChannelToBroadcast multiGenerate
+	closeChannelToBroadcast multiGenerate chain-test
 all: $(APPS)
 
 $(BUILDDIR)/%:

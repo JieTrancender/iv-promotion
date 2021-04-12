@@ -1,12 +1,9 @@
 module github.com/JieTrancender/iv-promotion
 
-go 1.15
+go 1.14
 
 require (
-	github.com/coreos/etcd v3.3.13+incompatible
-	github.com/mitchellh/go-homedir v1.1.0
-	github.com/nsqio/go-nsq v1.0.8
-	github.com/spf13/cobra v1.1.1
-	github.com/spf13/viper v1.7.1
-	go.uber.org/zap v1.10.0
+	github.com/gofrs/uuid v4.0.0+incompatible
+	google.golang.org/grpc v1.37.0
+	google.golang.org/protobuf v1.26.0
 )

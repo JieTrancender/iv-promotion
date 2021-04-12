@@ -5,6 +5,14 @@ on:
     tags:
       - v*
 
+builds:
+  -
+    main: ./apps/atomic-test/main.go
+
+builds:
+  -
+    main: ./apps/chain-test/main.go
+
 jobs:
   goreleaser:
     runs-on: ubuntu-latest

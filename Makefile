@@ -16,10 +16,11 @@ clean:
 	rm -rf $(BUILDDIR)
 
 test:
-	go test -v -race -cover -coverprofile=coverage.txt -covermode=atomic ./...
+	GO111MODULE=on go test -v -race -cover -coverprofile=coverage.txt -covermode=atomic ./...
 
 .PHONY: clean all test lint
 .PHONY: $(APPS)
 
 lint:
+	golangci-lint cache clean
 	golangci-lint run --tests=false ./...
